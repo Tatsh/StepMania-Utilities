@@ -18,7 +18,6 @@
  */
 
 #include "globals.h"
-#include "print_message.h"
 #include "dwi.h"
 
 /**
@@ -29,8 +28,8 @@
  */
 int main(int argc, char *argv[]) {
   if (argc != 3) {
-    printErrorMessage("Usage: %s FILE ADJUSTMENT", argv[0]);
-    printErrorMessage("  where ADJUSTMENT is an integer.");
+    fprintf(stderr, "Usage: %s FILE ADJUSTMENT\n", argv[0]);
+    fprintf(stderr, "  where ADJUSTMENT is an integer.\n");
     exit(EXIT_FAILURE);
   }
 
@@ -114,7 +113,7 @@ int main(int argc, char *argv[]) {
     fclose(fout);
   }
   else {
-    printErrorMessage("Failed to open output file.");
+    fprintf(stderr, "Failed to open output file.\n");
   }
 
   DWIFreeSong(song);

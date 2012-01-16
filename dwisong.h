@@ -20,9 +20,6 @@
 #ifndef __DWISONG_H
 #define __DWISONG_H
 
-#define MAX_SECTION_LENGTH 40960
-#define MAX_SECTIONS 100
-
 typedef struct _DWISong {
   double sampleStart;
   double sampleLength;

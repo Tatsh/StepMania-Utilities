@@ -19,7 +19,6 @@
 
 #include "globals.h"
 #include "dwi.h"
-#include "print_message.h"
 
 /**
  * Parse a section of the file given a pointer to the file.
@@ -38,7 +37,7 @@ char *DWIParseSection(FILE *fin) {
   }
 
   if (feof(fin) || c != ';') {
-    printErrorMessage("DWI file is non-compliant.");
+    fprintf(stderr, "DWI file is non-compliant.\n");
     exit(EXIT_FAILURE);
   }
 
@@ -110,7 +109,7 @@ DWISong *DWIParseFilename(const char *filename) {
   DWISong *song = DWIInitialize();
 
   if (!(fin = fopen(filename, "r"))) {
-    printErrorMessage("Could not open file.");
+    fprintf(stderr, "Could not open file.\n");
     exit(EXIT_FAILURE);
   }
 
@@ -118,7 +117,7 @@ DWISong *DWIParseFilename(const char *filename) {
     c = getc(fin);
 
     if (c == '#') {
-      //printMessage("Opening new section.");
+      //printf("Opening new section.");
       varName[0] = '\0';
 
       c = getc(fin);
@@ -126,7 +125,7 @@ DWISong *DWIParseFilename(const char *filename) {
 
       while (!feof(fin) && c != ':') {
         if (i >= 31) {
-          printErrorMessage("DWI file is not compliant.");
+          fprintf(stderr, "DWI file is not compliant.\n");
           DWIFreeSong(song);
           exit(EXIT_FAILURE);
         }
@@ -136,7 +135,7 @@ DWISong *DWIParseFilename(const char *filename) {
       }
 
       if (feof(fin)) {
-        printErrorMessage("DWI file ended abruptly.");
+        fprintf(stderr, "DWI file ended abruptly.\n");
         DWIFreeSong(song);
         exit(EXIT_FAILURE);
       }
@@ -208,12 +207,12 @@ DWISong *DWIParseFilename(const char *filename) {
  * @return void
  */
 void DWIPrintSongInformation(DWISong *song) {
-  printMessage("CD Title: %s", song->CDTitlePath == NULL ? "None" : song->CDTitlePath);
-  printMessage("Title: %s", song->title);
-  printMessage("Artist: %s", song->artist);
-  printMessage("Initial BPM: %.2f", song->initialBPM);
-  printMessage("Gap: %d", song->gap);
-  printMessage("Sample start: %.2f", song->sampleStart);
-  printMessage("Sample length: %.2f", song->sampleLength);
-  printMessage("%d other sections", song->otherSectionsCount);
+  printf("CD Title: %s\n", song->CDTitlePath == NULL ? "None" : song->CDTitlePath);
+  printf("Title: %s\n", song->title);
+  printf("Artist: %s\n", song->artist);
+  printf("Initial BPM: %.2f\n", song->initialBPM);
+  printf("Gap: %d\n", song->gap);
+  printf("Sample start: %.2f\n", song->sampleStart);
+  printf("Sample length: %.2f\n", song->sampleLength);
+  printf("%d other sections\n", song->otherSectionsCount);
 }

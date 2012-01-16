@@ -24,9 +24,13 @@
 
 #include <assert.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+
+#define MAX_SECTION_LENGTH 40960
+#define MAX_SECTIONS 100
 
 #endif // __GLOBALS_H

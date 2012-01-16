@@ -18,7 +18,7 @@
 
 CC     = gcc
 CFLAGS = -Wall -std=c99
-OBJS   = print_message.o dwi.o
+OBJS   = dwi.o
 
 all: dwi-adjust-gap dwi-adjust-bpm
 
@@ -33,8 +33,5 @@ dwi-adjust-gap.o:
 dwi.o: dwi.c
 	$(CC) -c -o dwi.o $(CFLAGS) dwi.c
 
-print_message.o: print_message.c
-	$(CC) -c -o print_message.o $(CFLAGS) print_message.c
-
 clean:
-	rm -f *.o dwi-adjust-gap
+	rm -f *.o dwi-adjust-gap dwi-adjust-bpm
