@@ -1,0 +1,9 @@
+StepMania Utilities
+
+Adjust the initial BPM (the #BPM attribute) of a song:
+dwi-adjust-bpm myfile.dwi -20.5
+dwi-adjust-bpm myfile.dwi 12
+
+Adjust the gap (the #GAP attribute) of a song:
+dwi-adjust-gap myfile.dwi -200
+dwi-adjust-gap myfile.dwi 500
